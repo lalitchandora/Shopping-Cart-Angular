@@ -1,0 +1,45 @@
+<div class="outer">
+  <div class="cart">
+    <div class="cart-form">
+      <form>
+        <div class="inp-wrap">
+          <label for="name">Product Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter Product Name" [(ngModel)]="name">
+        </div>
+        <div class="inp-wrap">
+          <label for="price">Product Price (for 1 quantity)</label>
+          <input type="number" id="price" name="price" placeholder="Enter Price" [(ngModel)]="price">
+        </div>
+        <div class="inp-wrap">
+          <label for="quantity">Product Quantity</label>
+          <input type="number" id="quantity" name="quantity" placeholder="Enter Quantity" [(ngModel)]="quantity">
+        </div>
+        <div class="btn-wrap">
+          <p style="color: red;">{{err}}</p>
+          <input type="button" value="Add to Cart" (click)="addForm()">
+        </div>
+      </form>
+    </div>
+    <div class="cart-list" *ngFor="let item of cartArr">
+      <div class="product">
+        <div class="section-1">
+          <h3 class="product-name">{{item.productName}}</h3>
+          <h3 class="product-price-one">Price: ${{item.price}}</h3>
+          <h3 class="product-quantity">Quantity: {{item.quantity}}</h3>
+          <button class="quantity-sub" (click)="subQuantity(item.id)">-</button>
+          <button class="quantity-add" (click)="addQuantity(item.id)">+</button>
+        </div>
+        <div class="section-2">
+          <button class="product-remove" (click)="deleteForm(item.id)">x</button>
+          <h3 class="product-price">Price: ${{item.price*item.quantity}}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="total-section">
+      <h3>
+        Total:
+      </h3>
+      <h3>${{total}}</h3>
+    </div>
+  </div>
+</div>

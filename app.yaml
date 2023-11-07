@@ -1,0 +1,9 @@
+runtime: nodejs16
+instance_class: F2
+env_variables:
+BUCKET_NAME: "your-ng-app-bucket" 
+handlers: - url: /
+static_files: dist/your-angular-app/index.html
+upload: dist/your-angular-app/index.html 
+- url: /
+static_dir: dist/your-angular-app
